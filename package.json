@@ -33,7 +33,10 @@
     "dev": "ts-node-dev --files src/app.ts",
     "start": "node dist/app.js",
     "typeorm": "typeorm-ts-node-commonjs",
-    "build": "tsc"
+    "build": "tsc",
+    "migration:create": "typeorm-ts-node-commonjs migration:create",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d ./src/data-source.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts"
   },
   "repository": "git@github.com:Kenzie-Academy-Brasil-Developers/q4-sprint2-kenzie-buster-miguelleite21.git",
   "author": "<miguelleite360@gmail.com>"
