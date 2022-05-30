@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lastMigration1653673300588 = void 0;
-const bcrypt_1 = require("bcrypt");
 class lastMigration1653673300588 {
     constructor() {
         this.name = "lastMigration1653673300588";
@@ -18,10 +17,6 @@ class lastMigration1653673300588 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.query(`ALTER TABLE "dvd" ADD "userQuantity" integer`);
-            yield queryRunner.query(`
-                  INSERT INTO "user" ("email", "name", "password", "isAdm")
-                  VALUES ("kenzie@mail.com", "kenzie",'${(0, bcrypt_1.hashSync)("umaSenhaForte!", 10)}', true)
-                `);
         });
     }
     down(queryRunner) {

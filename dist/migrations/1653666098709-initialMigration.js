@@ -10,9 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initialMigration1653666098709 = void 0;
+const bcrypt_1 = require("bcrypt");
+const uuid_1 = require("uuid");
 class initialMigration1653666098709 {
     constructor() {
-        this.name = 'initialMigration1653666098709';
+        this.name = "initialMigration1653666098709";
     }
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -27,6 +29,7 @@ class initialMigration1653666098709 {
             yield queryRunner.query(`ALTER TABLE "cart" ADD CONSTRAINT "FK_756f53ab9466eb52a52619ee019" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
             yield queryRunner.query(`ALTER TABLE "cart_dvd_dvd" ADD CONSTRAINT "FK_41a8b443c698bdb1ff6dab2f1f2" FOREIGN KEY ("cartId") REFERENCES "cart"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
             yield queryRunner.query(`ALTER TABLE "cart_dvd_dvd" ADD CONSTRAINT "FK_27f40d8569d19c502f854360285" FOREIGN KEY ("dvdId") REFERENCES "dvd"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
+            yield queryRunner.query(`INSERT INTO "user" ("id","name","email", "password", "isAdm")VALUES ('${(0, uuid_1.v4)()}','kenzie','kenzie@mail.com','${(0, bcrypt_1.hashSync)("umaSenhaForte!", 10)}', true)`);
         });
     }
     down(queryRunner) {
