@@ -26,3 +26,4 @@ class lastMigration1653673300588 {
     }
 }
 exports.lastMigration1653673300588 = lastMigration1653673300588;
+//# sourceMappingURL=1653673300588-lastMigration.js.map

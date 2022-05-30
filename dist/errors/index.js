@@ -16,3 +16,4 @@ const handleError = (err, res) => {
     });
 };
 exports.handleError = handleError;
+//# sourceMappingURL=index.js.map

@@ -36,3 +36,4 @@ const createUserController = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.default = createUserController;
+//# sourceMappingURL=userCreate.controller.js.map

@@ -22,4 +22,5 @@ app.use((err, request, response, _) => {
         message: "Internal server error",
     });
 });
-app.listen(5000);
+exports.default = app;
+//# sourceMappingURL=app.js.map

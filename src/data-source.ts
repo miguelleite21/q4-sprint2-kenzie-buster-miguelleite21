@@ -12,11 +12,3 @@ export const AppDataSource = new DataSource({
   entities: [path.join(__dirname, "./entities/**/*.{js,ts}")],
   migrations: [path.join(__dirname, "./migrations/**/*.{js,ts}")],
 });
-
-AppDataSource.initialize()
-  .then(() => {
-    console.log("Ok");
-  })
-  .catch((err) => {
-    console.log(err);
-  });

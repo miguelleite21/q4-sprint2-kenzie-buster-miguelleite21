@@ -27,3 +27,4 @@ const tokenVerify = (req, res, next) => {
     }
 };
 exports.tokenVerify = tokenVerify;
+//# sourceMappingURL=tokenVerify.midllewares.js.map

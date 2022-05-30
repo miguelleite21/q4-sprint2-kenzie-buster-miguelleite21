@@ -17,10 +17,4 @@ exports.AppDataSource = new typeorm_1.DataSource({
     entities: [path_1.default.join(__dirname, "./entities/**/*.{js,ts}")],
     migrations: [path_1.default.join(__dirname, "./migrations/**/*.{js,ts}")],
 });
-exports.AppDataSource.initialize()
-    .then(() => {
-    console.log("Ok");
-})
-    .catch((err) => {
-    console.log(err);
-});
+//# sourceMappingURL=data-source.js.map

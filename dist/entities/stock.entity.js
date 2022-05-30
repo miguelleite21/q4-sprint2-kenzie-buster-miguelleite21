@@ -36,3 +36,4 @@ Stock = __decorate([
     __metadata("design:paramtypes", [])
 ], Stock);
 exports.Stock = Stock;
+//# sourceMappingURL=stock.entity.js.map

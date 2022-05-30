@@ -43,3 +43,4 @@ const loginUserService = ({ email, password }) => __awaiter(void 0, void 0, void
     return token;
 });
 exports.default = loginUserService;
+//# sourceMappingURL=loginUser.service.js.map

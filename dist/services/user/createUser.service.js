@@ -63,3 +63,4 @@ const createUserService = ({ name, email, password, isAdm = false, token, }) => 
     return user;
 });
 exports.default = createUserService;
+//# sourceMappingURL=createUser.service.js.map

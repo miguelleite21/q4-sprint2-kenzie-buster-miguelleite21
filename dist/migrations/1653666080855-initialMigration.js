@@ -21,3 +21,4 @@ class initialMigration1653666080855 {
     }
 }
 exports.initialMigration1653666080855 = initialMigration1653666080855;
+//# sourceMappingURL=1653666080855-initialMigration.js.map

@@ -49,3 +49,4 @@ User = __decorate([
     __metadata("design:paramtypes", [])
 ], User);
 exports.User = User;
+//# sourceMappingURL=user.entity.js.map

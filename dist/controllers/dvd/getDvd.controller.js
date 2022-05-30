@@ -18,3 +18,4 @@ const getDvdController = (req, res) => __awaiter(void 0, void 0, void 0, functio
     return res.status(200).send(dvds);
 });
 exports.default = getDvdController;
+//# sourceMappingURL=getDvd.controller.js.map

@@ -34,3 +34,4 @@ const admVerify = (token = "") => __awaiter(void 0, void 0, void 0, function* ()
     });
 });
 exports.admVerify = admVerify;
+//# sourceMappingURL=admVerify.js.map

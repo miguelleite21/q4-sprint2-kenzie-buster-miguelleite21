@@ -10,3 +10,4 @@ const appRoutes = (app) => {
     app.use("/api/carts", (0, cart_routes_1.cartRoutes)());
 };
 exports.appRoutes = appRoutes;
+//# sourceMappingURL=index.js.map

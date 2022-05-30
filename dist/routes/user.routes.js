@@ -14,3 +14,4 @@ const userRoutes = () => {
     return routes;
 };
 exports.userRoutes = userRoutes;
+//# sourceMappingURL=user.routes.js.map
