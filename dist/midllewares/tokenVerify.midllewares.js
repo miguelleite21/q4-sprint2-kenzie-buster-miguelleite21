@@ -16,7 +16,7 @@ const tokenVerify = (req, res, next) => {
             if (err) {
                 throw new errors_1.AppError(401, "Invalid Token");
             }
-            req.userEmail = decoded.email;
+            req.body.userEmail = decoded.email;
             next();
         });
     }

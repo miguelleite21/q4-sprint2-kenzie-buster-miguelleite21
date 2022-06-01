@@ -15,19 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const errors_1 = require("../../errors");
 const createDvd_service_1 = __importDefault(require("../../services/dvd/createDvd.service"));
 const createDvdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(1);
     try {
-        const { name, duration, price, quantity } = req.body;
-        const token = req.headers.authorization;
-        const newDvd = yield (0, createDvd_service_1.default)({
-            name,
-            duration,
-            price,
-            quantity,
-            token,
-        });
-        console.log(3);
-        return res.status(201).send(newDvd);
+        const { dvds, userEmail } = req.body;
+        const allDvds = [];
+        yield dvds.map((dvd) => __awaiter(void 0, void 0, void 0, function* () {
+            return allDvds.push(yield (0, createDvd_service_1.default)({
+                name: dvd.name,
+                duration: dvd.duration,
+                price: dvd.price,
+                quantity: dvd.quantity,
+                userEmail,
+            }));
+        }));
+        return res.status(201).send(allDvds);
     }
     catch (err) {
         if (err instanceof errors_1.AppError) {

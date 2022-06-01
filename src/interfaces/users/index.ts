@@ -10,8 +10,7 @@ export interface IUserCreate {
   email: string;
   password: string;
   isAdm?: boolean;
-  adm: boolean;
-  token?: string;
+  userEmail: string;
 }
 
 export interface ILogin {

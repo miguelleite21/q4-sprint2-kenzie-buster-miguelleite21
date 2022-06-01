@@ -9,7 +9,7 @@ export interface IDvdCreate {
   duration: string;
   quantity: number;
   price: number;
-  token?: string;
+  userEmail: string;
 }
 
 export interface IDvdBuy {

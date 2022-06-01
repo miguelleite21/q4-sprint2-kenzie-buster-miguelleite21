@@ -20,7 +20,7 @@ export const tokenVerify = (
         if (err) {
           throw new AppError(401, "Invalid Token");
         }
-        req.userEmail = decoded.email;
+        req.body.userEmail = decoded.email;
         next();
       }
     );

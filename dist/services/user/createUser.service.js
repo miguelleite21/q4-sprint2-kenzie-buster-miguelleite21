@@ -17,8 +17,7 @@ const errors_1 = require("../../errors");
 const user_entity_1 = require("../../entities/user.entity");
 const cart_entity_1 = require("../../entities/cart.entity");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const admVerify_1 = require("../../utils/admVerify");
-const createUserService = ({ name, email, password, isAdm = false, token, }) => __awaiter(void 0, void 0, void 0, function* () {
+const createUserService = ({ name, email, password, isAdm = false, userEmail, }) => __awaiter(void 0, void 0, void 0, function* () {
     const userRepository = data_source_1.AppDataSource.getRepository(user_entity_1.User);
     const cartRepository = data_source_1.AppDataSource.getRepository(cart_entity_1.Cart);
     const users = yield userRepository.find();
@@ -39,10 +38,10 @@ const createUserService = ({ name, email, password, isAdm = false, token, }) => 
     if (emailAlreadyExists) {
         throw new errors_1.AppError(409, `Key (email)=(${email}) already exists.`);
     }
-    if (isAdm) {
-        const adm = yield (0, admVerify_1.admVerify)(token);
-        if (!adm) {
-            throw new errors_1.AppError(400, "missing admin permision");
+    if (isAdm !== false) {
+        const userAdm = users.find((user) => user.email === userEmail);
+        if (!userAdm.isAdm) {
+            throw new errors_1.AppError(401, "missing admin permision");
         }
     }
     const cart = new cart_entity_1.Cart();

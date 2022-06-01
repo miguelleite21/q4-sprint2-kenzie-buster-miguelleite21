@@ -3,7 +3,6 @@ import buyDvdController from "../controllers/dvd/buyDvd.controller";
 import createDvdController from "../controllers/dvd/createDvd.controller";
 import getDvdController from "../controllers/dvd/getDvd.controller";
 import { tokenVerify } from "../midllewares/tokenVerify.midllewares";
-import buyUserService from "../services/dvd/buyDvd.service";
 const routes = Router();
 
 export const dvdRoutes = () => {

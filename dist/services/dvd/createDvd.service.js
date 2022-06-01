@@ -12,19 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const data_source_1 = require("../../data-source");
 const dvd_entity_1 = require("../../entities/dvd.entity");
 const stock_entity_1 = require("../../entities/stock.entity");
-const admVerify_1 = require("../../utils/admVerify");
+const user_entity_1 = require("../../entities/user.entity");
 const errors_1 = require("../../errors");
-const createDvdService = ({ name, duration, price, quantity, token, }) => __awaiter(void 0, void 0, void 0, function* () {
+const createDvdService = ({ name, duration, price, quantity, userEmail, }) => __awaiter(void 0, void 0, void 0, function* () {
     const dvdRepository = data_source_1.AppDataSource.getRepository(dvd_entity_1.Dvd);
     const stockRepository = data_source_1.AppDataSource.getRepository(stock_entity_1.Stock);
+    const userRepository = data_source_1.AppDataSource.getRepository(user_entity_1.User);
+    const error = [];
+    const user = yield userRepository.findOne({
+        where: {
+            email: userEmail,
+        },
+    });
     const dvds = yield dvdRepository.findOne({
         where: {
             name: name,
         },
     });
-    const error = [];
-    const adm = (0, admVerify_1.admVerify)(token);
-    if (!adm) {
+    if (!user.isAdm) {
         throw new errors_1.AppError(400, "missing admin permision");
     }
     if (!name) {

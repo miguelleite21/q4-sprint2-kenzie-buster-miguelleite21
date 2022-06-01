@@ -4,14 +4,13 @@ import { AppError } from "../../errors";
 import { User } from "../../entities/user.entity";
 import { Cart } from "../../entities/cart.entity";
 import bcrypt from "bcrypt";
-import { admVerify } from "../../utils/admVerify";
 
 const createUserService = async ({
   name,
   email,
   password,
   isAdm = false,
-  token,
+  userEmail,
 }: IUserCreate) => {
   const userRepository = AppDataSource.getRepository(User);
   const cartRepository = AppDataSource.getRepository(Cart);
@@ -37,10 +36,10 @@ const createUserService = async ({
     throw new AppError(409, `Key (email)=(${email}) already exists.`);
   }
 
-  if (isAdm) {
-    const adm = await admVerify(token);
-    if (!adm) {
-      throw new AppError(400, "missing admin permision");
+  if (isAdm !== false) {
+    const userAdm = users.find((user) => user.email === userEmail);
+    if (!userAdm.isAdm) {
+      throw new AppError(401, "missing admin permision");
     }
   }
 

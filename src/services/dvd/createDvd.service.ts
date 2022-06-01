@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { IDvdCreate } from "../../interfaces/dvd";
 import { Dvd } from "../../entities/dvd.entity";
 import { Stock } from "../../entities/stock.entity";
-import { admVerify } from "../../utils/admVerify";
+import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors";
 
 const createDvdService = async ({
@@ -10,19 +10,26 @@ const createDvdService = async ({
   duration,
   price,
   quantity,
-  token,
+  userEmail,
 }: IDvdCreate) => {
   const dvdRepository = AppDataSource.getRepository(Dvd);
   const stockRepository = AppDataSource.getRepository(Stock);
+  const userRepository = AppDataSource.getRepository(User);
+  const error = [];
+
+  const user = await userRepository.findOne({
+    where: {
+      email: userEmail,
+    },
+  });
 
   const dvds = await dvdRepository.findOne({
     where: {
       name: name,
     },
   });
-  const error = [];
-  const adm = admVerify(token);
-  if (!adm) {
+
+  if (!user.isAdm) {
     throw new AppError(400, "missing admin permision");
   }
 

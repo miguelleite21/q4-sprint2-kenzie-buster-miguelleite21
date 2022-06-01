@@ -4,15 +4,14 @@ import { AppError, handleError } from "../../errors";
 
 const createUserController = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, isAdm, adm } = req.body;
-    const token = req.headers.authorization?.split(" ")[1];
+    const { name, email, password, isAdm } = req.body;
+    const userEmail = req.body.userEmail;
     const newUser = await createUserService({
       name,
       email,
       password,
       isAdm,
-      adm,
-      token,
+      userEmail,
     });
     return res.status(201).send(newUser);
   } catch (err) {

@@ -15,17 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const createUser_service_1 = __importDefault(require("../../services/user/createUser.service"));
 const errors_1 = require("../../errors");
 const createUserController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     try {
-        const { name, email, password, isAdm, adm } = req.body;
-        const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
+        const { name, email, password, isAdm } = req.body;
+        const userEmail = req.body.userEmail;
         const newUser = yield (0, createUser_service_1.default)({
             name,
             email,
             password,
             isAdm,
-            adm,
-            token,
+            userEmail,
         });
         return res.status(201).send(newUser);
     }

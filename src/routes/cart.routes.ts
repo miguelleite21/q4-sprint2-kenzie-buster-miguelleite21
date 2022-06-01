@@ -5,7 +5,7 @@ import { tokenVerify } from "../midllewares/tokenVerify.midllewares";
 const routes = Router();
 
 export const cartRoutes = () => {
-  routes.post("/pay", tokenVerify, payCartController);
+  routes.put("/pay", tokenVerify, payCartController);
 
   return routes;
 };

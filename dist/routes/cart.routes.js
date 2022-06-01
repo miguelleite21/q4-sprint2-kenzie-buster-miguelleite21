@@ -9,7 +9,7 @@ const payCart_controller_1 = __importDefault(require("../controllers/cart/payCar
 const tokenVerify_midllewares_1 = require("../midllewares/tokenVerify.midllewares");
 const routes = (0, express_1.Router)();
 const cartRoutes = () => {
-    routes.post("/pay", tokenVerify_midllewares_1.tokenVerify, payCart_controller_1.default);
+    routes.put("/pay", tokenVerify_midllewares_1.tokenVerify, payCart_controller_1.default);
     return routes;
 };
 exports.cartRoutes = cartRoutes;
